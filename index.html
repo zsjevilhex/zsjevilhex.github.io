@@ -142,6 +142,62 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://zsjevilhex.github.io/archives/2020/04/18/PortInfo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="evilhex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="evilhex">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/18/PortInfo/" class="post-title-link" itemprop="url">PortInfo</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-18 11:37:37" itemprop="dateModified" datetime="2020-04-18T11:37:37+08:00">2020-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">端口：21              服务：FTP/TFTP/VSFTPD <span class="comment">#总结：爆破/嗅探/溢出/后门</span></span><br><span class="line">端口：22              服务：ssh远程连接 <span class="comment">#总结：爆破/openssh漏洞</span></span><br><span class="line">端口：23              服务：Telnet远程连接 <span class="comment">#总结：爆破/嗅探/弱口令</span></span><br><span class="line">端口：25              服务：SMTP邮件服务 <span class="comment">#总结：邮件伪造</span></span><br><span class="line">端口：53              服务：DNS域名解析系统  <span class="comment">#总结：域传送/劫持/缓存投毒/欺骗</span></span><br><span class="line">端口：67/68           服务：dhcp服务 <span class="comment">#总结：劫持/欺骗</span></span><br><span class="line">端口：110             服务：pop3 <span class="comment">#总结：爆破/嗅探</span></span><br><span class="line">端口：139             服务：Samba服务 <span class="comment">#总结：爆破/未授权访问/远程命令执行</span></span><br><span class="line">端口：143             服务：Imap协议 <span class="comment">#总结：爆破161SNMP协议爆破/搜集目标内网信息</span></span><br><span class="line">端口：389             服务：Ldap目录访问协议 <span class="comment">#总结：注入/未授权访问/弱口令</span></span><br><span class="line">端口：445             服务：smb <span class="comment">#总结：ms17-010/端口溢出</span></span><br><span class="line">端口：512/513/514     服务：Linux Rexec服务 <span class="comment">#总结：爆破/Rlogin登陆</span></span><br><span class="line">端口：873             服务：Rsync服务 <span class="comment">#总结：文件上传/未授权访问</span></span><br><span class="line">端口：1080            服务：socket <span class="comment">#总结：爆破</span></span><br><span class="line">端口：1352            服务：Lotus domino邮件服务 <span class="comment">#总结：爆破/信息泄漏</span></span><br><span class="line">端口：1433            服务：mssql <span class="comment">#总结：爆破/注入/SA弱口令</span></span><br><span class="line">端口：1521            服务：oracle <span class="comment">#总结：爆破/注入/TNS爆破/反弹shell2049Nfs服务配置不当</span></span><br><span class="line">端口：2181            服务：zookeeper服务 <span class="comment">#总结：未授权访问</span></span><br><span class="line">端口：2375            服务：docker remote api  <span class="comment">#总结：未授权访问</span></span><br><span class="line">端口：3306            服务：mysql <span class="comment">#总结：爆破/注入</span></span><br><span class="line">端口：3389            服务：Rdp远程桌面链接 <span class="comment">#总结：爆破/shift后门</span></span><br><span class="line">端口：4848            服务：GlassFish控制台  <span class="comment">#总结：爆破/认证绕过</span></span><br><span class="line">端口：5000            服务：sybase/DB2数据库 <span class="comment">#总结：爆破/注入/提权</span></span><br><span class="line">端口：5432            服务：postgresql  <span class="comment">#总结：爆破/注入/缓冲区溢出</span></span><br><span class="line">端口：5632            服务：pcanywhere服务  <span class="comment">#总结：抓密码/代码执行</span></span><br><span class="line">端口：5900            服务：vnc <span class="comment">#总结：爆破/认证绕过</span></span><br><span class="line">端口：6379            服务：Redis数据库 <span class="comment">#总结：未授权访问/爆破</span></span><br><span class="line">端口：7001/7002       服务：weblogic <span class="comment">#总结：java反序列化/控制台弱口令</span></span><br><span class="line">端口：80/443          服务：http/https <span class="comment">#总结：web应用漏洞/心脏滴血</span></span><br><span class="line">端口：8069            服务：zabbix服务 <span class="comment">#总结：远程命令执行/注入</span></span><br><span class="line">端口：8161            服务：activemq <span class="comment">#总结：弱口令/写文件</span></span><br><span class="line">端口：8080/8089       服务：Jboss/Tomcat/Resin <span class="comment">#总结：爆破/PUT文件上传/反序列化</span></span><br><span class="line">端口：8083/8086       服务：influxDB <span class="comment">#总结：未授权访问</span></span><br><span class="line">端口：9000            服务：fastcgi <span class="comment">#总结：远程命令执行</span></span><br><span class="line">端口：9090            服务：Websphere <span class="comment">#总结：控制台爆破/java反序列化/弱口令</span></span><br><span class="line">端口：9200/9300       服务：elasticsearch <span class="comment">#总结：远程代码执行</span></span><br><span class="line">端口：11211           服务：memcached <span class="comment">#总结：未授权访问</span></span><br><span class="line">端口：27017/27018     服务：mongodb <span class="comment">#总结：未授权访问/爆破</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://zsjevilhex.github.io/archives/2020/04/17/UsefulLinks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -525,7 +581,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-16 23:52:31" itemprop="dateModified" datetime="2020-04-16T23:52:31+08:00">2020-04-16</time>
+                <time title="Modified: 2020-04-18 11:42:47" itemprop="dateModified" datetime="2020-04-18T11:42:47+08:00">2020-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -551,7 +607,9 @@
       
           <h2 id="0、setup-tools"><a href="#0、setup-tools" class="headerlink" title="0、setup-tools"></a>0、setup-tools</h2><h2 id="1、RAT："><a href="#1、RAT：" class="headerlink" title="1、RAT："></a>1、RAT：</h2><h3 id="001-RAT-000-Config-RAT"><a href="#001-RAT-000-Config-RAT" class="headerlink" title="[001]RAT/[000]Config-RAT:"></a>[001]RAT/[000]Config-RAT:</h3><h3 id="001-RAT-001-C-horse"><a href="#001-RAT-001-C-horse" class="headerlink" title="[001]RAT/[001]C-horse:"></a>[001]RAT/[001]C-horse:</h3><h3 id="001-RAT-002-AntSword"><a href="#001-RAT-002-AntSword" class="headerlink" title="[001]RAT/[002]AntSword:"></a>[001]RAT/[002]AntSword:</h3><h3 id="001-RAT-004-CobaltStrike"><a href="#001-RAT-004-CobaltStrike" class="headerlink" title="[001]RAT/[004]CobaltStrike:"></a>[001]RAT/[004]CobaltStrike:</h3><h2 id="2、渗透"><a href="#2、渗透" class="headerlink" title="2、渗透:"></a>2、渗透:</h2><h3 id="002-渗透-000-GetWindowsPass"><a href="#002-渗透-000-GetWindowsPass" class="headerlink" title="[002]渗透/[000]GetWindowsPass:"></a>[002]渗透/[000]GetWindowsPass:</h3><h3 id="002-渗透-001-GetInfoByPC"><a href="#002-渗透-001-GetInfoByPC" class="headerlink" title="[002]渗透/[001]GetInfoByPC:"></a>[002]渗透/[001]GetInfoByPC:</h3><h3 id="002-渗透-002-GetPass"><a href="#002-渗透-002-GetPass" class="headerlink" title="[002]渗透/[002]GetPass:"></a>[002]渗透/[002]GetPass:</h3><h3 id="002-渗透-003-ExchangeTools"><a href="#002-渗透-003-ExchangeTools" class="headerlink" title="[002]渗透/[003]ExchangeTools:"></a>[002]渗透/[003]ExchangeTools:</h3><h3 id="002-渗透-004-porttrans"><a href="#002-渗透-004-porttrans" class="headerlink" title="[002]渗透/[004]porttrans:"></a>[002]渗透/[004]porttrans:</h3><h3 id="002-渗透-005-DomainTools"><a href="#002-渗透-005-DomainTools" class="headerlink" title="[002]渗透/[005]DomainTools:"></a>[002]渗透/[005]DomainTools:</h3><h4 id="2-5-8、sharpwmi-exe"><a href="#2-5-8、sharpwmi-exe" class="headerlink" title="2.5.8、sharpwmi.exe"></a>2.5.8、sharpwmi.exe</h4><p><font size=3>使用说明: 通过135端口远程执行命令、上传文件等，依赖powershell、不依赖139和445端口，原理是将内容存储在对方机器注册表中，所以最长不能超过512kb</font><br><font size=3>使用方法: <a href="https://github.com/QAX-A-Team/sharpwmi" target="_blank" rel="noopener">ref</a></font></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sharpwmi.exe 192.168.2.3 administrator 123 cmd whoami  <span class="comment">#执行命令</span></span><br><span class="line">sharpwmi.exe 192.168.2.3 administrator 123 upload beacon.exe c:\beacon.exe   <span class="comment">#上传文件</span></span><br></pre></td></tr></table></figure>
-<h3 id="002-渗透-006-ScanTools"><a href="#002-渗透-006-ScanTools" class="headerlink" title="[002]渗透/[006]ScanTools:"></a>[002]渗透/[006]ScanTools:</h3><h3 id="002-渗透-007-GetInfoByWeb"><a href="#002-渗透-007-GetInfoByWeb" class="headerlink" title="[002]渗透/[007]GetInfoByWeb:"></a>[002]渗透/[007]GetInfoByWeb:</h3><h3 id="002-渗透-008-NetWorkTools"><a href="#002-渗透-008-NetWorkTools" class="headerlink" title="[002]渗透/[008]NetWorkTools:"></a>[002]渗透/[008]NetWorkTools:</h3><h3 id="002-渗透-008-NetWorkTools-000-WgetForWindows"><a href="#002-渗透-008-NetWorkTools-000-WgetForWindows" class="headerlink" title="[002]渗透/[008]NetWorkTools/[000]WgetForWindows:"></a>[002]渗透/[008]NetWorkTools/[000]WgetForWindows:</h3><h3 id="002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp"><a href="#002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp" class="headerlink" title="[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:"></a>[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:</h3><h3 id="002-渗透-008-NetWorkTools-002-NcForWin"><a href="#002-渗透-008-NetWorkTools-002-NcForWin" class="headerlink" title="[002]渗透/[008]NetWorkTools/[002]NcForWin:"></a>[002]渗透/[008]NetWorkTools/[002]NcForWin:</h3><h3 id="002-渗透-009-ByPassTools"><a href="#002-渗透-009-ByPassTools" class="headerlink" title="[002]渗透/[009]ByPassTools:"></a>[002]渗透/[009]ByPassTools:</h3><h2 id="3、Brute"><a href="#3、Brute" class="headerlink" title="3、Brute:"></a>3、Brute:</h2><h2 id="4、vuln"><a href="#4、vuln" class="headerlink" title="4、vuln:"></a>4、vuln:</h2>
+<h3 id="002-渗透-006-ScanTools"><a href="#002-渗透-006-ScanTools" class="headerlink" title="[002]渗透/[006]ScanTools:"></a>[002]渗透/[006]ScanTools:</h3><h3 id="002-渗透-007-GetInfoByWeb"><a href="#002-渗透-007-GetInfoByWeb" class="headerlink" title="[002]渗透/[007]GetInfoByWeb:"></a>[002]渗透/[007]GetInfoByWeb:</h3><h3 id="002-渗透-008-NetWorkTools"><a href="#002-渗透-008-NetWorkTools" class="headerlink" title="[002]渗透/[008]NetWorkTools:"></a>[002]渗透/[008]NetWorkTools:</h3><h4 id="2-8-1、nmap"><a href="#2-8-1、nmap" class="headerlink" title="2.8.1、nmap:"></a>2.8.1、nmap:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[ref] (https://github.com/nmap/nmap)</span><br><span class="line"></span><br><span class="line">扫描多个IP</span><br><span class="line">扫描整个子网 nmap 192.168.6.1/24</span><br><span class="line">		   nmap 192.168.1.1/16</span><br><span class="line">		   nmap 192.168.1-30.1-254</span><br><span class="line">		   nmap 192.168.1-254.6</span><br><span class="line">扫描多个主机 namp 192.168.6.2 192.168.6.6</span><br><span class="line">扫描一个小范围 nmap 192.168.6.2-10</span><br><span class="line">扫描txt内的ip列表  nmap -iL text.txt</span><br><span class="line">扫描除某个目标外   nmap 192.168.6.1/24 -exclude 192.168.6.25</span><br><span class="line">绕过Firewalld扫描主机端口</span><br><span class="line">通过不同的协议(TCP半连接、TCP全连接、ICMP、UDP等)的扫描绕过Firewalld的限制</span><br><span class="line"></span><br><span class="line">nmap -sP 192.33.6.128</span><br><span class="line">nmap -sT 192.33.6.128</span><br><span class="line">nmap -sS 192.33.6.128</span><br><span class="line">nmap -sU 192.33.6.128</span><br><span class="line">nmap -sF 192.33.6.128</span><br><span class="line">nmap -sX 192.33.6.128</span><br><span class="line">nmap -sN 192.33.6.128</span><br><span class="line">初步扫描端口信息</span><br><span class="line">nmap -T4 -A -v -Pn 192.168.1.1/24 -p 21,22,23,25,80,81,82,83,88,110,143,443,445,512,513,514,1433,1521,2082,2083,2181,2</span><br></pre></td></tr></table></figure>
+
+<h3 id="002-渗透-008-NetWorkTools-000-WgetForWindows"><a href="#002-渗透-008-NetWorkTools-000-WgetForWindows" class="headerlink" title="[002]渗透/[008]NetWorkTools/[000]WgetForWindows:"></a>[002]渗透/[008]NetWorkTools/[000]WgetForWindows:</h3><h3 id="002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp"><a href="#002-渗透-008-NetWorkTools-001-Putty-amp-Plink-amp-Psftp" class="headerlink" title="[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:"></a>[002]渗透/[008]NetWorkTools/[001]Putty&amp;Plink&amp;Psftp:</h3><h3 id="002-渗透-008-NetWorkTools-002-NcForWin"><a href="#002-渗透-008-NetWorkTools-002-NcForWin" class="headerlink" title="[002]渗透/[008]NetWorkTools/[002]NcForWin:"></a>[002]渗透/[008]NetWorkTools/[002]NcForWin:</h3><h3 id="002-渗透-009-ByPassTools"><a href="#002-渗透-009-ByPassTools" class="headerlink" title="[002]渗透/[009]ByPassTools:"></a>[002]渗透/[009]ByPassTools:</h3><h2 id="3、Brute"><a href="#3、Brute" class="headerlink" title="3、Brute:"></a>3、Brute:</h2><h2 id="4、vuln"><a href="#4、vuln" class="headerlink" title="4、vuln:"></a>4、vuln:</h2>
       
     </div>
 
@@ -878,7 +936,7 @@ setspn.exe -T xx.xx.xx.xx -Q /              # 查看当前域内所有spn</code>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
